@@ -106,11 +106,6 @@ background:url(../images/background/bg-subheader.jpg)top fixed;
 
 
 
-
-
-
-
-
 /* background settings for side navigation subheader */
 .de-navbar-left.de_light #subheader{background:url(../images/background/bg-subheader-sn.jpg)top fixed;}
 .de-navbar-left.de_light.page-projects #subheader{background-image:url(../images/background/subheader-1-sn.jpg);}
