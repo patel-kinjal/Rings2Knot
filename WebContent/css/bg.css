@@ -96,6 +96,15 @@ background:url(../images/background/bg-subheader.jpg)top fixed;
 #section-side-4.side-bg .background-image{background:url(../images/background/bg-side-8.jpg);}
 
 
+
+#section-location-1.side-bg .background-image{background:url(../propertyImages/Udaipur/TheOberoiUdaivilasPalace/exterior-shot3.jpg);}
+#section-location-2.side-bg .background-image{background:url(../propertyImages/jodhpur/UmaidBhawan/cq5dam.web.1280.1280.3.jpeg);}
+#section-location-3.side-bg .background-image{background:url(../propertyImages/Goa/ZuriWhiteSands/Copy-of-DSC_3517.jpg);}
+#section-location-4.side-bg .background-image{background:url(../images/background/bg-service-4.jpg);}
+#section-location-2,#section-service-4{background:#f2f2f2;}
+
+
+
 /* background settings for side navigation subheader */
 .de-navbar-left.de_light #subheader{background:url(../images/background/bg-subheader-sn.jpg)top fixed;}
 .de-navbar-left.de_light.page-projects #subheader{background-image:url(../images/background/subheader-1-sn.jpg);}
