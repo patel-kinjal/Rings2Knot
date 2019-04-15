@@ -101,11 +101,15 @@ background:url(../images/background/bg-subheader.jpg)top fixed;
 #section-location-2.side-bg .background-image{background:url(../propertyImages/Jodhpur/UmaidBhawan/UmaidBhawan3.jpeg);}
 #section-location-3.side-bg .background-image{background:url(../propertyImages/Goa/ZuriWhiteSands/ZuriWhiteSands6.jpg);}
 #section-location-4.side-bg .background-image{background:url(../propertyImages/Shimla/OberoiWildflowerHallShimla/OberoiWildflowerHallShimla7.jpg);}
-/* #section-location-5.side-bg .background-image{background:url(../propertyImages/Mussoorie/TheGoldenPalmsHotelAndSpaMussoorie/TheGoldenPalmsHotelAndSpaMussoorie4.JPG);}  */
 #section-location-5.side-bg .background-image{background:url(../propertyImages/Mussoorie/Mussorrie1.jpg);}
 #section-location-6.side-bg .background-image{background:url(../propertyImages/Kerala/Houseboat.jpg);}
 
-#section-location-2,#section-location-4,#section-location-6,#section-service-4,#section-service-6{background:#f2f2f2;}
+/*  International Locations Service  */
+#section-location-7.side-bg .background-image{background:url(../propertyImages/Dubai/AlMahaaLuxuryCollectionDesertResortSpa/AlMahaaLuxuryCollectionDesertResortSpa12.jpg);}
+#section-location-8.side-bg .background-image{background:url(../propertyImages/Jodhpur/UmaidBhawan/UmaidBhawan3.jpeg);}
+#section-location-9.side-bg .background-image{background:url(../propertyImages/Goa/ZuriWhiteSands/ZuriWhiteSands6.jpg);}
+
+#section-location-2,#section-location-4,#section-location-6,#section-service-4,#section-service-6,#section-service-8{background:#f2f2f2;}
 
 
 
