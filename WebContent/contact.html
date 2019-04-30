@@ -48,10 +48,39 @@
 	  </script>   
 	  
 	  <script type="text/javascript">
+	  
+	  $(document).ready(function () {
+		  
+		  $("#contact_form").submit(function (e) {
+		       e.preventDefault();
+		       
+		       alert("Here");
+		       (document.getElementById("send_message").title == "Sending...")
+
+		       var payload = {
+		    	          "from_name": $('#from_name').val(),
+		    	          "from_phone": $('#from_phone').val(),
+		    	          "description_html": $('#description_html').val(),
+		    	          "from_email": $('#from_email').val()
+		    	        };
+		       
+	           emailjs.send("gmail", "enquiry_from_rings2knot", payload)
+	           .then(function(response) {
+	        	   alert("Email sent successfully !");
+	              document.getElementById("contact_form").reset();
+	              console.log('SUCCESS!', response.status, response.text);
+	           }, function(error) {
+	        	   alert("Failed to send the email, please try later.");
+	              console.log('FAILED...', error);
+	           });
+		  });
+	  });
 	  	  
 	  function submitToAPI(e) {
 	       e.preventDefault();
-	       	       
+	       
+	       (document.getElementById("send_message").title == "Sending...")
+
 	       var payload = {
 	    	          "from_name": $('#from_name').val(),
 	    	          "from_phone": $('#from_phone').val(),
@@ -61,7 +90,7 @@
 	       
            emailjs.send("gmail", "enquiry_from_rings2knot", payload)
            .then(function(response) {
-        	   alert("Eail sent successfully !");
+        	   alert("Email sent successfully !");
               document.getElementById("contact_form").reset();
               console.log('SUCCESS!', response.status, response.text);
            }, function(error) {
@@ -113,15 +142,15 @@
                            <div class="col-md-4">
                               <div id='name_error' class='error'>Please enter your name.</div>
                               <div>
-                                 <input type='text' name='from_name' id='from_name' class="form-control" placeholder="Your Name">
+                                 <input type='text' required="required" name='from_name' id='from_name' class="form-control" placeholder="Your Name">
                               </div>
                               <div id='email_error' class='error'>Please enter your valid E-mail ID.</div>
                               <div>
-                                 <input type='text' name='from_email' id='from_email' class="form-control" placeholder="Your Email">
+                                 <input type='text' required="required" name='from_email' id='from_email' class="form-control" placeholder="Your Email">
                               </div>
                               <div id='phone_error' class='error'>Please enter your phone number.</div>
                               <div>
-                                 <input type='text' name='from_phone' id='from_phone' class="form-control" placeholder="Your Phone">
+                                 <input type='text' required="required" name='from_phone' id='from_phone' class="form-control" placeholder="Your Phone">
                               </div>
                               
 							 <!-- <select required>
@@ -135,13 +164,13 @@
                            <div class="col-md-8">
                               <div id='message_error' class='error'>Please enter your message.</div>
                               <div>
-                                 <textarea name='description_html' id='description_html' class="form-control" placeholder="How can we help you ?"></textarea>
+                                 <textarea name='description_html' required="required" id='description_html' class="form-control" placeholder="How can we help you ?"></textarea>
                               </div>
                            </div>
                            <div class="col-md-12">
                               <br/>
                               <p id='submit' align="center">
-                                 <input type='submit' id='send_message' value='Submit Form' class="btn btn-line" onClick="submitToAPI(event)">
+                                 <input type='submit' id='send_message' value='Submit Form' class="btn btn-line">
                               </p>
                               <div id='mail_success' class='success'>Your message has been sent successfully.</div>
                               <div id='mail_fail' class='error'>Sorry, error occurred this time sending your message.</div>
