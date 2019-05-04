@@ -3898,6 +3898,9 @@ width:100%;
 
 .picframe{
 overflow:hidden !important;
+max-height: 300px !important;
+min-height: 300px !important;
+object-fit: contain;
 }
 
 #btn-close-x{
