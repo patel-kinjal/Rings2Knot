@@ -3903,6 +3903,11 @@ min-height: 300px !important;
 object-fit: contain;
 }
 
+.picframe-services{
+overflow:hidden !important;
+object-fit: contain;
+}
+
 #btn-close-x{
 width:100px;
 height:100px;
