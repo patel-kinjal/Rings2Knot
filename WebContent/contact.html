@@ -49,7 +49,10 @@
 	  
 	  <script type="text/javascript">
 	  
-	  $(document).ready(function() {                      
+	  $(document).ready(function() {
+		  
+		  venue_date.min = new Date().toISOString().split("T")[0];
+		  
        $("#submit").click(function(e) {                 
       e.preventDefault();                          
       var name = $("#from_name").val(),                     
@@ -127,22 +130,96 @@
                               <div>
                                  <input type='text' name='from_name' id='from_name' class="form-control" placeholder="Your Name">
                               </div>
+                              
                               <div id='email_error' class='error'>Please enter your valid E-mail ID.</div>
                               <div>
                                  <input type='text' name='from_email' id='from_email' class="form-control" placeholder="Your Email">
                               </div>
+                              
                               <div id='phone_error' class='error'>Please enter your phone number.</div>
                               <div>
                                  <input type='text' name='from_phone' id='from_phone' class="form-control" placeholder="Your Phone">
                               </div>
                               
+                              <div id='budget_error' class='error'>Please enter your approx. budget</div>
+                              <div>
+                                 <input type='text' name='from_budget' id='from_budget' class="form-control" placeholder="Your Budget, like 20 - 25 Lakhs">
+                              </div>
+                              
+                              <div id='services_error' class='error'>Please enter services you would like to avail from us</div>
+                              <div>
+                                 <input type='text' name='from_services' id='from_services' class="form-control" placeholder="Photography, Makeup, Wedding Venue, etc.">
+                              </div>
                            </div>
+                           
                            <div class="col-md-8">
-                              <div id='message_error' class='error'>Please enter your message.</div>
+                           <div class="de_form no-bg">
+                                <a>Wedding Location :</a>
+                                <!-- <div class="spacer-half"></div> -->
+                                <div class="de_form de_radio">
+                                
+                                    <span class="mr20">
+                                        <input id="radio-2-c" name="radio-group-2" type="radio" value="Goa" checked="checked">
+                                        <label for="radio-2-c">Goa</label>
+                                    </span>
+
+                                    <span class="mr20">
+                                        <input id="radio-2-a" name="radio-group-2" type="radio" value="Udaipur">
+                                        <label for="radio-2-a">Udaipur</label>
+                                    </span>
+
+                                    <span class="mr20">
+                                        <input id="radio-2-b" name="radio-group-2" type="radio" value="Jodhpur">
+                                        <label for="radio-2-b">Jodhpur</label>
+                                    </span>
+
+                                    <span class="mr20">
+                                        <input id="radio-2-c" name="radio-group-2" type="radio" value="Shimla">
+                                        <label for="radio-2-c">Shimla</label>
+                                    </span>
+
+                                    <span class="mr20">
+                                        <input id="radio-2-c" name="radio-group-2" type="radio" value="Mussorrie">
+                                        <label for="radio-2-c">Mussorrie</label>
+                                    </span>
+
+                                    <span class="mr20">
+                                        <input id="radio-2-c" name="radio-group-2" type="radio" value="Kerala">
+                                        <label for="radio-2-c">Kerala</label>
+                                    </span>
+
+                                    <span class="mr20">
+                                        <input id="radio-2-c" name="radio-group-2" type="radio" value="Dubai">
+                                        <label for="radio-2-c">Dubai</label>
+                                    </span>
+
+                                    <span class="mr20">
+                                        <input id="radio-2-c" name="radio-group-2" type="radio" value="Bali">
+                                        <label for="radio-2-c">Bali</label>
+                                    </span>
+
+                                    <span class="mr20">
+                                        <input id="radio-2-c" name="radio-group-2" type="radio" value="Phuket">
+                                        <label for="radio-2-c">Phuket</label>
+                                    </span>
+                                </div>
+                           </div>
+                           
+                           <div class="spacer-half"></div>
+                                
+                           <div>
+                           	    <a>Wedding Date : &nbsp; &nbsp;</a>
+ 								<input type="date" name="venue_date" id="venue_date">
+                           </div>
+                           
+                           <div class="spacer-half"></div>                              
+                           
+                           <div id='message_error' class='error'>Please enter your message.</div>
                               <div>
                                  <textarea name='description_html' id='description_html' class="form-control" placeholder="How can we help you ?"></textarea>
                               </div>
                            </div>
+                           
                            <div class="col-md-12">
                               <br/>
                               <p id='submit' align="center">
