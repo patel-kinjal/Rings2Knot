@@ -98,6 +98,7 @@
                 services = $("#from_services").val(),
                 destination = selectedDestination,
                 venue = $("#venue_date").val(),
+                noOfGuest = $("#noOfGuest").val(),
                 message = $("#description_html").val();
 
             var data = {
@@ -108,9 +109,12 @@
                 'services': services,
                 'destination': destination,
                 'venue': venue,
+                'noOfGuest': noOfGuest,
                 'msg': message
             };
 
+            alert(data);
+            
             $.ajax({
                 type: "POST",
                 url: apiURL, // "https://jfg107nyk7.execute-api.ap-south-1.amazonaws.com/dev/contact-us",
@@ -268,8 +272,14 @@
 
                                     <div id='services_error' class='error'>Please enter services you would like to avail from us</div>
                                     <div>
-                                        <input type='text' name='from_services' id='from_services' class="form-control" placeholder="Photography, Makeup, Wedding Venue, etc." required>
+                                        <input type='text' name='from_services' id='from_services' class="form-control" placeholder="Services like Photography, Makeup, Venue, etc." required>
                                     </div>
+                                    
+                                    <div id='noOfGuest_error' class='error'>Please enter no. of guests attending</div>
+                                    <div>
+                                        <input type='text' name='noOfGuest' id='noOfGuest' class="form-control" placeholder="No. of guests attending" required>
+                                    </div>
+                                                                        
                                 </div>
 
                                 <div class="col-md-8">
@@ -331,12 +341,10 @@
                                     </div>
 
                                     <div class="spacer-half"></div>
-
                                     <div>
                                         <a>Wedding Date : &nbsp; &nbsp;</a>
                                         <input type="date" name="venue_date" id="venue_date" required>
                                     </div>
-
                                     <div class="spacer-half"></div>
 
                                     <div id='message_error' class='error'>Please enter your message.</div>
