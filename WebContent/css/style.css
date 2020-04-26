@@ -1351,7 +1351,7 @@ border:solid 1px #ddd;
 	
 	address span strong {
         display: inline-block;
-        width: 60px;
+        /* width: 60px; */
     }
 	
 	address span{
