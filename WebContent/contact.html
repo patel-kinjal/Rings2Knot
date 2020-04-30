@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Bespoke Luxury Destination Weddings in India &amp; Abroad | Destination Wedding Planner</title>
+    <title>Rings2Knot | Luxury Destination Wedding Planner in India and Abroad</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Luxury international wedding planners based in India | Let Rings2Knot plan your day and tie the knot in style | Our team has over 5 years of experience in planning exclusive weddings and events in India. Get in touch !">
     <meta name="keywords" content="destination,dream,international,wedding,weddings,location,planner,drone,photography,photographer,airbrush,HD,makeup,artists,venue,choreographer,entertainment,clients,bollywood,actors,stars,honeymoon,packages,India,Dubai,Bali,Phuket,Shimla,Jaipur,Jodhpur,Mussoorie,Goa,Kerala">
@@ -40,15 +40,122 @@
             $("#footer").load("footer.html");
         });
     </script>
-
     <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
     <script type="text/javascript">
         (function() {
             emailjs.init("user_kz5jpkPyxIXYPFk0cy0eX");
         })();
     </script>
+    
+    
+    
+       <script type="text/javascript">
+	  
+	  $(document).ready(function() {
+		  $("#submit").click(function(e) {   
+		  	  // venue_date.min = new Date().toISOString().split("T")[0];
+	  	   
+		  	  alert("Here");
+		        e.preventDefault();
 
-    <script type="text/javascript">
+		        var apiURL = "https://jfg107nyk7.execute-api.ap-south-1.amazonaws.com/dev/contact-us";
+
+		        var Namere = /[A-Za-z]{1}[A-Za-z]/;
+		        if (!Namere.test($("#from_name").val())) {
+		            alert("Please enter valid name");
+		            return;
+		        }
+		        var mobilere = /[0-9]{10}/;
+		        if (!mobilere.test($("#from_phone").val())) {
+		            alert("Please enter valid mobile number");
+		            return;
+		        }
+		        if ($("#from_email").val() == "") {
+		            alert("Please enter your email id");
+		            return;
+		        }
+
+		        var reeamil = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
+		        if (!reeamil.test($("#from_email").val())) {
+		            alert("Please enter valid email address");
+		            return;
+		        }
+
+		        var destination_option = document.getElementsByName('radio-group-2');
+		        var isChecked = false;
+		        var selectedDestination = "--";
+		        for (var i = 0; i < destination_option.length; i++) {
+		            if (destination_option[i].checked) {
+		                selectedDestination = destination_option[i]
+		                isChecked = true;
+		                break;
+		            }
+		        }
+		        if (!isChecked) {
+		            alert("Please choose the destination");
+		            break;
+		        }
+
+		        var name = $("#from_name").val(),
+		            email = $("#from_email").val(),
+		            phone = $("#from_phone").val(),
+		            budget = $("#from_budget").val(),
+		            services = $("#from_services").val(),
+		            destination = selectedDestination,
+		            venue = $("#venue_date").val(),
+		            noOfGuest = $("#noOfGuest").val(),
+		            bride = $("#from_bride").val(),
+		            groom = $("#from_groom").val(),
+		            message = $("#description_html").val();
+
+		        var data = {
+		            'name': name,
+		            'email': email,
+		            'mobile': phone,
+		            'budget': budget,
+		            'services': services,
+		            'destination': destination,
+		            'venue': venue,
+		            'noOfGuest': noOfGuest,
+		            'bride': bride,
+		            'groom': groom,
+		            'msg': message
+		        };
+
+		        alert(data);
+
+		        $.ajax({
+		            type: "POST",
+		            url: apiURL,    // "https://jfg107nyk7.execute-api.ap-south-1.amazonaws.com/dev/contact-us",
+		            dataType: "json",
+		            crossDomain: true,
+		            contentType: "application/json; charset=utf-8",
+		            data: JSON.stringify(data),
+
+		            success: function(res) {
+		                // clear form and show a success message
+		                alert("Email sent successfully !");
+		                document.getElementById("contact_form").reset();
+		                console.log('SUCCESS!', data);
+		                location.reload();
+		            },
+		            error: function() {
+		                // show an error message
+		                alert("Could not process request at this time");
+		            }
+
+		        });
+		  }
+	  });     
+           
+	  
+ 	</script>
+    
+    
+    
+    
+    
+ <!--    <script type="text/javascript">
         function submitToAPI(e) {
 
             e.preventDefault();
@@ -99,6 +206,8 @@
                 destination = selectedDestination,
                 venue = $("#venue_date").val(),
                 noOfGuest = $("#noOfGuest").val(),
+                bride = $("#from_bride").val(),
+                groom = $("#from_groom").val(),
                 message = $("#description_html").val();
 
             var data = {
@@ -110,14 +219,16 @@
                 'destination': destination,
                 'venue': venue,
                 'noOfGuest': noOfGuest,
+                'bride': bride,
+                'groom': groom,
                 'msg': message
             };
 
             alert(data);
-            
+
             $.ajax({
                 type: "POST",
-                url: apiURL, // "https://jfg107nyk7.execute-api.ap-south-1.amazonaws.com/dev/contact-us",
+                url: apiURL,    // "https://jfg107nyk7.execute-api.ap-south-1.amazonaws.com/dev/contact-us",
                 dataType: "json",
                 crossDomain: true,
                 contentType: "application/json; charset=utf-8",
@@ -139,82 +250,14 @@
 
         }
     </script>
-
-<!--     <script type="text/javascript">
-        $(document).ready(function() {
-
-            venue_date.min = new Date().toISOString().split("T")[0];
-
-            $("#submit").click(function(e) {
-                e.preventDefault();
-
-                var destination_option = document.getElementsByName('radio-group-2');
-                var isChecked = false;
-                var selectedDestination = "--";
-                for (var i = 0; i < destination_option.length; i++) {
-                    if (destination_option[i].checked) {
-                        selectedDestination = destination_option[i]
-                        isChecked = true;
-                        break;
-                    }
-                }
-                if (!isChecked) {
-                    alert("Please choose the destination");
-                    break;
-                }
-
-                var name = $("#from_name").val(),
-                    email = $("#from_email").val(),
-                    phone = $("#from_phone").val(),
-                    budget = $("#from_budget").val(),
-                    services = $("#from_services").val(),
-                    destination = selectedDestination,
-                    venue = $("#venue_date").val(),
-                    message = $("#description_html").val();
-
-                $.ajax({
-                    type: "POST",
-                    url: 'https://jfg107nyk7.execute-api.ap-south-1.amazonaws.com/dev/contact-us',
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                        'name': name,
-                        'email': email,
-                        'mobile': phone,
-                        'budget': budget,
-                        'services': services,
-                        'destination': destination,
-                        'venue': venue,
-                        'msg': message
-                    }),
-                    success: function(res) {
-                        // clear form and show a success message
-                        alert("Email sent successfully !");
-                        document.getElementById("contact_form").reset();
-                        console.log('SUCCESS!', data);
-                        location.reload();
-                    },
-                    error: function validate() {
-                        var username = documment.getElementById("form_name");
-                        if (username.value.trim() == " ") {
-                            alert("no blank value allowed");
-                            return false;
-                        } else {
-                            true;
-                        }
-
-                    }
-                });
-            })
-        });
-    </script>
- -->
+ -->    
+    
+    
 </head>
 
 <body class="page-contact">
     <div id="wrapper">
-
         <div id="header"></div>
-
         <!-- subheader -->
         <section id="subheader" data-speed="8" data-type="background">
             <div class="container">
@@ -231,14 +274,11 @@
             </div>
         </section>
         <!-- subheader close -->
-
         <!-- content begin -->
         <div id="content" class="no-top">
-
             <!--  <section class="no-top" aria-label="map-container">
                <div id="map"></div>
-            </section> -->
-
+               </section> -->
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -254,127 +294,119 @@
                                     <div>
                                         <input type='text' name='from_name' id='from_name' class="form-control" placeholder="Your Name" required>
                                     </div>
-
                                     <div id='email_error' class='error'>Please enter your valid E-mail ID.</div>
                                     <div>
                                         <input type='text' name='from_email' id='from_email' class="form-control" placeholder="Your Email" required>
                                     </div>
-
                                     <div id='phone_error' class='error'>Please enter your phone number.</div>
                                     <div>
                                         <input type='text' name='from_phone' id='from_phone' class="form-control" placeholder="Your Phone" minlength="10" required>
                                     </div>
-
                                     <div id='budget_error' class='error'>Please enter your approx. budget</div>
                                     <div>
                                         <input type='text' name='from_budget' id='from_budget' class="form-control" placeholder="Your Budget, like 20 - 25 Lakhs" required>
                                     </div>
-
                                     <div id='services_error' class='error'>Please enter services you would like to avail from us</div>
                                     <div>
                                         <input type='text' name='from_services' id='from_services' class="form-control" placeholder="Services like Photography, Makeup, Venue, etc." required>
                                     </div>
-                                    
                                     <div id='noOfGuest_error' class='error'>Please enter no. of guests attending</div>
                                     <div>
                                         <input type='text' name='noOfGuest' id='noOfGuest' class="form-control" placeholder="No. of guests attending" required>
                                     </div>
-                                                                        
                                 </div>
-
+                                
+                                <div class="col-md-4">
+                                     <div id='name_error' class='error'>Please enter Bride's name.</div>
+                                    <div>
+                                        <input type='text' name='from_bride' id='from_bride' class="form-control" placeholder="Bride's Name" required>
+                                    </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                    <div id='email_error' class='error'>Please enter Groom's name.</div>
+                                    <div>
+                                        <input type='text' name='from_groom' id='from_groom' class="form-control" placeholder="Groom's Name" required>
+                                    </div>
+                                </div>
+                                
                                 <div class="col-md-8">
                                     <div class="de_form no-bg">
                                         <a>Wedding Location :</a>
                                         <!-- <div class="spacer-half"></div> -->
                                         <div class="de_form de_radio">
-
                                             <span class="mr20">
-                                        <input id="Goa" name="radio-group-2" type="radio" value="Goa">
-                                        <label for="Goa">Goa</label>
+                                    <input id="Goa" name="radio-group-2" type="radio" value="Goa">
+                                    <label for="Goa">Goa</label>
                                     </span>
-
                                             <span class="mr20">
-                                        <input id="Udaipur" name="radio-group-2" type="radio" value="Udaipur">
-                                        <label for="Udaipur">Udaipur</label>
+                                    <input id="Udaipur" name="radio-group-2" type="radio" value="Udaipur">
+                                    <label for="Udaipur">Udaipur</label>
                                     </span>
-
                                             <span class="mr20">
-                                        <input id="Jodhpur" name="radio-group-2" type="radio" value="Jodhpur">
-                                        <label for="Jodhpur">Jodhpur</label>
+                                    <input id="Jodhpur" name="radio-group-2" type="radio" value="Jodhpur">
+                                    <label for="Jodhpur">Jodhpur</label>
                                     </span>
-
                                             <span class="mr20">
-                                        <input id="Shimla" name="radio-group-2" type="radio" value="Shimla">
-                                        <label for="Shimla">Shimla</label>
+                                    <input id="Shimla" name="radio-group-2" type="radio" value="Shimla">
+                                    <label for="Shimla">Shimla</label>
                                     </span>
-
                                             <span class="mr20">
-                                        <input id="Mussorrie" name="radio-group-2" type="radio" value="Mussorrie">
-                                        <label for="Mussorrie">Mussorrie</label>
+                                    <input id="Mussorrie" name="radio-group-2" type="radio" value="Mussorrie">
+                                    <label for="Mussorrie">Mussorrie</label>
                                     </span>
-
                                             <span class="mr20">
-                                        <input id="Kerala" name="radio-group-2" type="radio" value="Kerala">
-                                        <label for="Kerala">Kerala</label>
+                                    <input id="Kerala" name="radio-group-2" type="radio" value="Kerala">
+                                    <label for="Kerala">Kerala</label>
                                     </span>
-
                                             <span class="mr20">
-                                        <input id="Hyderabad" name="radio-group-2" type="radio" value="Hyderabad">
-                                        <label for="Hyderabad">Hyderabad</label>
+                                    <input id="Hyderabad" name="radio-group-2" type="radio" value="Hyderabad">
+                                    <label for="Hyderabad">Hyderabad</label>
                                     </span>
-
                                             <span class="mr20">
-                                        <input id="Dubai" name="radio-group-2" type="radio" value="Dubai">
-                                        <label for="Dubai">Dubai</label>
+                                    <input id="Dubai" name="radio-group-2" type="radio" value="Dubai">
+                                    <label for="Dubai">Dubai</label>
                                     </span>
-
                                             <span class="mr20">
-                                        <input id="Bali" name="radio-group-2" type="radio" value="Bali">
-                                        <label for="Bali">Bali</label>
+                                    <input id="Bali" name="radio-group-2" type="radio" value="Bali">
+                                    <label for="Bali">Bali</label>
                                     </span>
-
                                             <span class="mr20">
-                                        <input id="Phuket" name="radio-group-2" type="radio" value="Phuket">
-                                        <label for="Phuket">Phuket</label>
+                                    <input id="Phuket" name="radio-group-2" type="radio" value="Phuket">
+                                    <label for="Phuket">Phuket</label>
                                     </span>
                                         </div>
                                     </div>
-
+                                    
                                     <div class="spacer-half"></div>
                                     <div>
                                         <a>Wedding Date : &nbsp; &nbsp;</a>
                                         <input type="date" name="venue_date" id="venue_date" required>
                                     </div>
                                     <div class="spacer-half"></div>
-
                                     <div id='message_error' class='error'>Please enter your message.</div>
                                     <div>
                                         <textarea name='description_html' id='description_html' class="form-control" placeholder="How can we help you ?" required></textarea>
                                     </div>
                                 </div>
-
                                 <div class="col-md-12" align="center">
                                     <br/>
-                                    <button id="submit" type="submit" class="btn btn-line" onClick="submitToAPI(event)">Submit Form</button>
+                                    <!-- <button type="button" onClick="submitToAPI(event)" class="btn btn-line" style="margin-top:20px;">Submit</button> -->
+                                    <input type="submit" id="submit" class="btn btn-line" value="Send">
+                                    
                                     <!-- <p id='submit' align="center">
-                                        <input type='submit' id="submit" value='Submit Form' class="btn btn-line">
-                                    </p> -->
+                                 <input type='submit' id="submit" value='Submit Form' class="btn btn-line">
+                                 </p> -->
                                     <div id='mail_success' class='success'>Your message has been sent successfully.</div>
                                     <div id='mail_fail' class='error'>Sorry, error occurred this time sending your message.</div>
                                 </div>
                             </div>
-
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
-
         <div id="footer"></div>
-
     </div>
-
     <!-- Javascript Files ================================================== -->
     <script src="js/jpreLoader.js"></script>
     <script src="js/bootstrap.min.js"></script>
